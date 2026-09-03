@@ -19,16 +19,18 @@ const portfolioDots=document.querySelector(".portfolio-dots");
 let activeProject=0;
 function projectDistance(index){let distance=index-activeProject;const half=portfolioCards.length/2;if(distance>half)distance-=portfolioCards.length;if(distance<-half)distance+=portfolioCards.length;return distance}
 function renderPortfolio(){
-  portfolioCards.forEach((card,index)=>{const distance=projectDistance(index);const abs=Math.abs(distance);card.style.transform="translateX(calc(-50% + "+(distance*42)+"%)) translateZ("+(-abs*180)+"px) rotateY("+(distance*-18)+"deg) scale("+(1-abs*.1)+")";card.style.opacity=abs>2?"0":String(1-abs*.24);card.style.filter=abs?"saturate(.55) brightness(.62)":"none";card.style.zIndex=String(10-abs);card.tabIndex=distance===0?0:-1;card.setAttribute("aria-hidden",distance===0?"false":"true")});
+  portfolioCards.forEach((card,index)=>{const distance=projectDistance(index);const abs=Math.abs(distance);card.style.transform="translateX(calc(-50% + "+(distance*50)+"%)) translateZ("+(-abs*210)+"px) rotateY("+(distance*-20)+"deg) scale("+(1-abs*.11)+")";card.style.opacity=abs>2?"0":String(1-abs*.22);card.style.filter=abs?"saturate(.58) brightness(.66)":"none";card.style.zIndex=String(10-abs);card.tabIndex=distance===0?0:-1;card.classList.toggle("active",distance===0)});
   [...portfolioDots.children].forEach((dot,index)=>dot.classList.toggle("active",index===activeProject));
 }
 portfolioCards.forEach((_,index)=>{const dot=document.createElement("button");dot.className="portfolio-dot";dot.type="button";dot.setAttribute("aria-label","Vai al progetto "+(index+1));dot.addEventListener("click",()=>{activeProject=index;renderPortfolio()});portfolioDots.appendChild(dot)});
+portfolioCards.forEach((card,index)=>card.addEventListener("click",event=>{if(event.target.closest(".project-link")||index===activeProject)return;activeProject=index;renderPortfolio()}));
 function movePortfolio(step){activeProject=(activeProject+step+portfolioCards.length)%portfolioCards.length;renderPortfolio()}
 document.querySelector(".portfolio-arrow.prev").addEventListener("click",()=>movePortfolio(-1));
 document.querySelector(".portfolio-arrow.next").addEventListener("click",()=>movePortfolio(1));
 const portfolioStage=document.querySelector(".portfolio-stage");
 let dragStart=null;
-portfolioStage.addEventListener("pointerdown",event=>{dragStart=event.clientX;portfolioStage.setPointerCapture(event.pointerId)});
-portfolioStage.addEventListener("pointerup",event=>{if(dragStart===null)return;const delta=event.clientX-dragStart;if(Math.abs(delta)>45)movePortfolio(delta>0?-1:1);dragStart=null});
+portfolioStage.addEventListener("pointerdown",event=>{if(event.target.closest("button,.project-link"))return;dragStart=event.clientX;portfolioStage.classList.add("dragging");portfolioStage.setPointerCapture(event.pointerId)});
+portfolioStage.addEventListener("pointerup",event=>{if(dragStart===null)return;const delta=event.clientX-dragStart;if(Math.abs(delta)>35)movePortfolio(delta>0?-1:1);dragStart=null;portfolioStage.classList.remove("dragging")});
+portfolioStage.addEventListener("pointercancel",()=>{dragStart=null;portfolioStage.classList.remove("dragging")});
 portfolioStage.addEventListener("keydown",event=>{if(event.key==="ArrowLeft"){event.preventDefault();movePortfolio(-1)}if(event.key==="ArrowRight"){event.preventDefault();movePortfolio(1)}});
 renderPortfolio();
