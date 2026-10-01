@@ -21,3 +21,15 @@
 #human{scroll-margin-top:90px}
 @media(max-width:850px){.designer-portrait{width:min(100%,540px);margin:20px auto 0;order:2}.designer-portrait img{max-height:580px}.statement-inner{gap:30px;padding-bottom:20px}.designer-portrait figcaption{bottom:30px}}
 @media(max-width:520px){.designer-portrait figcaption{left:5%;bottom:26px}.portrait-index{font-size:7px}.designer-portrait img{max-height:460px}}
+
+/* Responsive corporate website device showcase */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-content:center;column-gap:24px;row-gap:30px}
+.hero .eyebrow{grid-column:1;grid-row:1}
+.hero-title{grid-column:1;grid-row:2;font-size:clamp(48px,5.5vw,94px);line-height:.94;margin:0;letter-spacing:-.065em}
+.hero-bottom{grid-column:1;grid-row:3;margin:0;padding-left:0;align-items:flex-start;flex-direction:column;gap:12px}
+.hero-bottom p{margin:0;max-width:380px}
+.hero-devices{position:relative;grid-column:2;grid-row:1 / 4;align-self:center;width:calc(100% + 40px);height:auto;right:auto;top:auto;margin-left:-12px;animation:none;filter:drop-shadow(0 22px 35px rgba(0,0,0,.35));transform:none!important;z-index:1}
+.hero-devices img{display:block;width:100%;height:auto;mask-image:radial-gradient(ellipse at center,#000 56%,transparent 76%);-webkit-mask-image:radial-gradient(ellipse at center,#000 56%,transparent 76%)}
+@media(min-width:1500px){.hero-devices{width:calc(100% + 65px)}}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:130px;padding-bottom:80px;row-gap:25px}.hero .eyebrow{grid-row:1}.hero-title{grid-row:2;font-size:clamp(48px,10vw,82px)}.hero-bottom{grid-row:3;display:flex}.hero-bottom .magnetic-btn{margin-top:0}.hero-devices{grid-column:1;grid-row:4;width:min(100%,700px);margin:0 auto}.hero-bottom p{max-width:480px}}
+@media(max-width:520px){.hero-title{font-size:clamp(40px,10.8vw,56px)}.hero-devices{width:calc(100% + 24px);margin-left:-12px}.hero{row-gap:24px}}
