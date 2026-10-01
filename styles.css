@@ -9,3 +9,15 @@
 @media(max-width:520px){.project-card{width:88vw;height:370px}.project-preview{height:245px}.project-meta{height:83px;padding:14px 18px}.project-meta h3{font-size:22px}.project-meta b{width:38px;height:38px}.portfolio-track{height:400px}.portfolio-stage{min-height:480px}.portfolio-heading h2{font-size:13vw}}
 .portfolio-stage{cursor:grab;user-select:none;-webkit-user-select:none}.portfolio-stage.dragging{cursor:grabbing}.project-card:not(.active){cursor:pointer}.project-link{position:relative;z-index:3;display:grid;place-items:center;width:45px;height:45px;border:1px solid rgba(69,215,255,.4);border-radius:50%;font-size:20px;font-weight:700;color:var(--cyan);transition:.3s}.project-link:hover,.project-link:focus-visible{background:var(--blue);color:#fff;transform:rotate(45deg);box-shadow:0 0 24px rgba(22,119,255,.55);outline:0}.project-card:hover .project-link{border-color:var(--cyan)}
 @media(max-width:520px){.project-link{width:38px;height:38px}}
+
+/* Editorial portrait — Lynca human connection */
+.designer-portrait{position:relative;isolation:isolate;margin:40px 0 0;align-self:end;min-width:0}
+.designer-portrait img{position:relative;z-index:1;display:block;width:100%;height:auto;max-height:660px;object-fit:contain;object-position:bottom;mask-image:linear-gradient(to bottom,#000 82%,transparent 99%);-webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent 99%)}
+.portrait-halo{position:absolute;inset:5% -12% 4%;z-index:-1;background:radial-gradient(ellipse at 44% 43%,rgba(22,119,255,.25),rgba(22,119,255,.06) 42%,transparent 69%);pointer-events:none}
+.portrait-index{position:absolute;left:0;top:0;color:var(--muted);font-size:8px;letter-spacing:.2em;writing-mode:vertical-rl}
+.designer-portrait figcaption{position:absolute;z-index:2;left:8%;bottom:36px;display:flex;flex-direction:column;gap:9px;border-left:2px solid var(--cyan);padding-left:18px}
+.designer-portrait figcaption>span{font-size:clamp(22px,2.5vw,36px);font-weight:600;letter-spacing:-.04em}
+.designer-portrait figcaption small{font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+#human{scroll-margin-top:90px}
+@media(max-width:850px){.designer-portrait{width:min(100%,540px);margin:20px auto 0;order:2}.designer-portrait img{max-height:580px}.statement-inner{gap:30px;padding-bottom:20px}.designer-portrait figcaption{bottom:30px}}
+@media(max-width:520px){.designer-portrait figcaption{left:5%;bottom:26px}.portrait-index{font-size:7px}.designer-portrait img{max-height:460px}}
